@@ -1,6 +1,5 @@
-#include <yara/modules.h>
-
-#define MODULE_NAME demo
-begin_declarations;
-  a_string("ransome");
-  
+import yara
+rules = yara.compile(sources={
+'identifier_for_instance_of rule':'rule BadBoy { 
+                       'strings': [('$a', ''),('$b', '') , ('$c', 'http://bar.com/badfile2.exe')],
+                       'condition': '$a and ($b or 
